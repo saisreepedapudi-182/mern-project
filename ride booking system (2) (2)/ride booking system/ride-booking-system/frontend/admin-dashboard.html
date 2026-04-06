@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="dashboard-body">
+  <div class="dashboard-shell">
+    <aside class="app-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <span class="brand-mark">RB</span>
+        <div>
+          <strong>Ride Booking</strong>
+          <span>Admin console</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button type="button" class="nav-link active" data-tab-target="overview">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6v7H4Zm10-9h6v16h-6ZM9 4h4v16H9Z"/></svg>
+          </span>
+          <span>Overview</span>
+        </button>
+        <button type="button" class="nav-link" data-tab-target="users">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12a3 3 0 1 0-3-3 3 3 0 0 0 3 3Zm8 0a3 3 0 1 0-3-3 3 3 0 0 0 3 3ZM8 14c-3 0-5 1.6-5 4v1h10v-1c0-2.4-2-4-5-4Zm8 0c-.9 0-1.8.1-2.5.4 1 .8 1.5 1.9 1.5 3.1v1h6v-1c0-2.4-2-4-5-4Z"/></svg>
+          </span>
+          <span>Users</span>
+        </button>
+        <button type="button" class="nav-link" data-tab-target="rides">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v6H5zM4 13h16l1 4v2h-2a2 2 0 0 1-4 0H9a2 2 0 0 1-4 0H3v-2l1-4Z"/></svg>
+          </span>
+          <span>Rides</span>
+        </button>
+        <button type="button" class="nav-link" data-tab-target="payments">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM5 10h14V8H5Zm0 6h4v-2H5Z"/></svg>
+          </span>
+          <span>Payments</span>
+        </button>
+        <button type="button" class="nav-link" data-tab-target="feedback">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H7l-3 3Zm4 3v2h8V8Zm0 4v2h5v-2Z"/></svg>
+          </span>
+          <span>Feedback</span>
+        </button>
+      </nav>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button mobile-only" id="sidebarToggle" type="button" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <div>
+            <p class="eyebrow">Admin dashboard</p>
+            <h1>Admin dashboard</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button id="refreshDashboardBtn" class="btn btn-secondary" type="button">Refresh</button>
+          <button id="logoutBtn" class="btn btn-secondary" type="button">Logout</button>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <section class="hero-panel glass-panel">
+          <div>
+            <span class="eyebrow">Overview</span>
+            <h2>Monitor rides, payments, and feedback.</h2>
+          </div>
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span>Users</span>
+              <strong id="summaryUsers">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Rides</span>
+              <strong id="summaryRides">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Payments</span>
+              <strong id="summaryPayments">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Revenue</span>
+              <strong id="summaryRevenue">$0</strong>
+            </article>
+          </div>
+        </section>
+
+        <section id="overview" class="tab active">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Overview</span>
+              <h2>Business snapshot</h2>
+            </div>
+          </div>
+
+          <div class="content-grid two-column">
+            <article class="info-card">
+              <h3>Summary cards</h3>
+              <div id="adminSummary" class="card-grid compact-grid"></div>
+            </article>
+            <article class="info-card accent-card">
+              <h3>Status distribution</h3>
+              <div id="adminChart" class="chart-bars"></div>
+            </article>
+          </div>
+        </section>
+
+        <section id="users" class="tab">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">User management</span>
+              <h2>All users</h2>
+            </div>
+            <label class="search-field">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.4-4.4M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
+              <input id="userSearch" type="search" placeholder="Search by name, email, or role" />
+            </label>
+          </div>
+          <article class="info-card table-card">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section id="rides" class="tab">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Ride operations</span>
+              <h2>All rides</h2>
+            </div>
+            <label class="search-field">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.4-4.4M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
+              <input id="rideSearch" type="search" placeholder="Search by route, rider, driver, or status" />
+            </label>
+          </div>
+          <article class="info-card table-card">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Route</th>
+                    <th>Customer</th>
+                    <th>Driver</th>
+                    <th>Status</th>
+                    <th>Fare</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="rideTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section id="payments" class="tab">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Transactions</span>
+              <h2>All payments</h2>
+            </div>
+            <label class="search-field">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.4-4.4M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
+              <input id="paymentSearch" type="search" placeholder="Search by route, user, method, or status" />
+            </label>
+          </div>
+          <article class="info-card table-card">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Ride</th>
+                    <th>Customer</th>
+                    <th>Driver</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="paymentTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section id="feedback" class="tab">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Quality signals</span>
+              <h2>Platform feedback</h2>
+            </div>
+            <label class="search-field">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.4-4.4M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
+              <input id="feedbackSearch" type="search" placeholder="Search by sender, recipient, role, or message" />
+            </label>
+          </div>
+          <article class="info-card">
+            <div id="feedbackList" class="card-grid"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="assignModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="assignModal"></div>
+    <div class="modal-dialog glass-panel">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Assign driver</span>
+          <h3>Dispatch ride</h3>
+        </div>
+        <button class="icon-button" type="button" data-close-modal="assignModal" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <p id="assignRideLabel"></p>
+      <input id="assignRideId" type="hidden" />
+      <label class="field">
+        <span>Select driver</span>
+        <select id="assignDriverSelect"></select>
+      </label>
+      <button id="confirmAssignBtn" class="btn btn-primary" type="button">Assign driver</button>
+    </div>
+  </div>
+
+  <div id="deleteUserModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="deleteUserModal"></div>
+    <div class="modal-dialog glass-panel">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Delete user</span>
+          <h3>Confirm removal</h3>
+        </div>
+        <button class="icon-button" type="button" data-close-modal="deleteUserModal" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <p id="deleteUserName"></p>
+      <input id="deleteUserId" type="hidden" />
+      <button id="confirmDeleteUserBtn" class="btn btn-danger" type="button">Delete user</button>
+    </div>
+  </div>
+
+  <div id="loadingOverlay" class="loading-overlay hidden" aria-hidden="true">
+    <div class="spinner"></div>
+    <span>Loading dashboard</span>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

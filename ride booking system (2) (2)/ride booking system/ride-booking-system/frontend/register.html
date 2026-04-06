@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ride Booking | Register</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="auth-immersive-page auth-immersive-register">
+  <div class="auth-ambient auth-ambient-one" aria-hidden="true"></div>
+  <div class="auth-ambient auth-ambient-two" aria-hidden="true"></div>
+
+  <main class="auth-immersive-shell auth-immersive-shell-register">
+    <section class="auth-immersive-showcase auth-immersive-showcase-register">
+      <a href="/" class="auth-return-link">Back to homepage</a>
+      <div class="auth-showcase-copy">
+        <span class="auth-kicker">Create your account</span>
+        <h1>Join as a customer or driver in a few clear steps.</h1>
+        <p>
+          The registration experience keeps the same backend registration endpoint while offering
+          a more polished, accessible, and role-focused interface.
+        </p>
+      </div>
+
+      <div class="auth-showcase-cards">
+        <article class="auth-mini-card">
+          <strong>Customer accounts</strong>
+          <span>Access ride booking, trip updates, and payment tools.</span>
+        </article>
+        <article class="auth-mini-card">
+          <strong>Driver accounts</strong>
+          <span>Manage ride assignments, fares, and ride progress.</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="auth-immersive-panel">
+      <div class="auth-panel-top">
+        <div class="auth-brand auth-brand-elevated">
+          <span class="home-brand-mark">RB</span>
+          <div class="home-brand-copy">
+            <strong>Ride Booking</strong>
+            <span>Secure account setup</span>
+          </div>
+        </div>
+        <div class="panel-header auth-panel-header-rich">
+          <span class="auth-kicker">Register</span>
+          <h2>Create your profile</h2>
+          <p>Choose your role, fill in your details, and connect instantly to the existing system.</p>
+        </div>
+      </div>
+
+      <div id="msg" class="notice notice-minimal auth-notice" role="status" aria-live="polite"></div>
+
+      <form id="registerForm" class="auth-form auth-form-rich" novalidate>
+        <div class="field-grid">
+          <label class="field">
+            <span>Full name</span>
+            <input type="text" id="name" placeholder="Enter your full name" autocomplete="name" required />
+          </label>
+          <label class="field">
+            <span>Phone number</span>
+            <input type="tel" id="phone" placeholder="Enter your phone number" autocomplete="tel" required />
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Email address</span>
+          <input type="email" id="email" placeholder="name@example.com" autocomplete="email" required />
+        </label>
+
+        <label class="field password-field">
+          <span>Password</span>
+          <input type="password" id="password" placeholder="Create a secure password" autocomplete="new-password" required />
+          <button class="password-toggle" type="button" data-password-toggle="password" aria-label="Show password">Show</button>
+        </label>
+
+        <div class="field">
+          <span>Register as</span>
+          <div class="role-picker role-picker-auth role-picker-register" id="rolePicker">
+            <button class="role-option role-option-auth active" type="button" data-role-option="customer">
+              <strong>Customer</strong>
+              <span>Book rides and manage your travel.</span>
+            </button>
+            <button class="role-option role-option-auth" type="button" data-role-option="driver">
+              <strong>Driver</strong>
+              <span>Accept rides and update trip progress.</span>
+            </button>
+          </div>
+          <select id="role" class="sr-only" aria-hidden="true">
+            <option value="customer" selected>Customer</option>
+            <option value="driver">Driver</option>
+          </select>
+        </div>
+
+        <button id="registerBtn" class="btn btn-primary btn-large" type="submit">
+          <span>Create account</span>
+        </button>
+      </form>
+
+      <p class="auth-switch auth-switch-minimal auth-switch-rich">
+        Already have an account?
+        <a href="login.html">Sign in</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

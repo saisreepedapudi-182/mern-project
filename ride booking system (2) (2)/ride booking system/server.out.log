@@ -1,0 +1,10 @@
+[dotenv@17.3.1] injecting env (2) from ride-booking-system\.env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+Server running on http://localhost:5001
+MongoDB connected
+[0mGET /register.html [36m304[0m 9.259 ms - -[0m
+[0mGET /css/style.css [32m200[0m 10.355 ms - 20959[0m
+[0mGET /js/main.js [36m304[0m 9.734 ms - -[0m
+[0mGET /favicon.ico [36m302[0m 4.563 ms - 23[0m
+[0mGET /health [32m200[0m 1.911 ms - 23[0m
+Root route accessed, serving login.html from: C:\Users\ubhar\OneDrive\Desktop\ride booking system\ride-booking-system\frontend\login.html
+[0mGET / [32m200[0m 2.421 ms - 1560[0m

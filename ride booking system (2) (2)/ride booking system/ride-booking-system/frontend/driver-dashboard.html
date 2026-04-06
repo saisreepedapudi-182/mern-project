@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driver Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="dashboard-body">
+  <div class="dashboard-shell">
+    <aside class="app-sidebar" id="driverSidebar">
+      <div class="sidebar-brand">
+        <span class="brand-mark">RB</span>
+        <div>
+          <strong>Ride Booking</strong>
+          <span>Driver portal</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button type="button" class="nav-link active" data-tab-target="profile">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.1 0-7 2.1-7 5v1h14v-1c0-2.9-2.9-5-7-5Z"/></svg>
+          </span>
+          <span>Profile</span>
+        </button>
+        <button type="button" class="nav-link" data-tab-target="assigned">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zm3 3v6h4V9Zm6 0v2h4V9Zm0 4v2h4v-2Z"/></svg>
+          </span>
+          <span>Assigned rides</span>
+        </button>
+        <button type="button" class="nav-link" data-tab-target="payments">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM5 10h14V8H5Zm0 6h4v-2H5Z"/></svg>
+          </span>
+          <span>Payments</span>
+        </button>
+        <button type="button" class="nav-link" data-tab-target="feedback">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H7l-3 3Zm4 3v2h8V8Zm0 4v2h5v-2Z"/></svg>
+          </span>
+          <span>Feedback</span>
+        </button>
+      </nav>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button mobile-only" id="sidebarToggle" type="button" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <div>
+            <p class="eyebrow">Driver dashboard</p>
+            <h1>Shift dashboard</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <label class="toggle-pill">
+            <input id="availabilityToggle" type="checkbox" checked />
+            <span>Available</span>
+          </label>
+          <button id="logoutBtn" class="btn btn-secondary" type="button">Logout</button>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <section class="hero-panel glass-panel">
+          <div>
+            <span class="eyebrow">Overview</span>
+            <h2>Track assigned rides and manage fares.</h2>
+          </div>
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span>Accepted</span>
+              <strong id="acceptedCountValue">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>In progress</span>
+              <strong id="inProgressCountValue">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Completed</span>
+              <strong id="completedCountValue">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Total fares</span>
+              <strong id="fareTotalValue">$0</strong>
+            </article>
+          </div>
+        </section>
+
+        <section id="profile" class="tab active">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Profile</span>
+              <h2>Driver details</h2>
+            </div>
+            <button id="editProfileBtn" class="btn btn-secondary" type="button">Edit profile</button>
+          </div>
+
+          <div class="content-grid two-column">
+            <article class="info-card">
+              <h3>Driver card</h3>
+              <div id="profileInfo" class="stack-list"></div>
+            </article>
+            <article id="profileForm" class="info-card hidden">
+              <h3>Update profile</h3>
+              <div class="field-grid">
+                <label class="field">
+                  <span>Name</span>
+                  <input type="text" id="name" placeholder="Name" />
+                </label>
+                <label class="field">
+                  <span>Phone</span>
+                  <input type="text" id="phone" placeholder="Phone" />
+                </label>
+              </div>
+              <label class="field">
+                <span>New password</span>
+                <input type="password" id="newPassword" placeholder="Leave blank to keep current password" />
+              </label>
+              <button id="saveProfileBtn" class="btn btn-primary" type="button">Save changes</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="assigned" class="tab">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Assigned rides</span>
+              <h2>Manage ride status and fare</h2>
+            </div>
+            <div id="driverStatusNotice" class="notice compact-notice" role="status" aria-live="polite"></div>
+          </div>
+
+          <article class="info-card">
+            <div id="assignedList" class="card-grid"></div>
+          </article>
+        </section>
+
+        <section id="payments" class="tab">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Payments</span>
+              <h2>Check ride payments</h2>
+            </div>
+          </div>
+          <article class="info-card">
+            <div id="paymentList" class="card-grid"></div>
+          </article>
+        </section>
+
+        <section id="feedback" class="tab">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Feedback</span>
+              <h2>Customer feedback</h2>
+            </div>
+          </div>
+          <article class="info-card">
+            <div id="feedbackList" class="card-grid"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="rideStatusModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="rideStatusModal"></div>
+    <div class="modal-dialog glass-panel">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Update ride</span>
+          <h3>Confirm status change</h3>
+        </div>
+        <button class="icon-button" type="button" data-close-modal="rideStatusModal" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <p id="rideStatusCopy">Update ride status.</p>
+      <input id="rideStatusRideId" type="hidden" />
+      <input id="rideStatusValue" type="hidden" />
+      <label class="field hidden" id="rideFareField">
+        <span>Fare</span>
+        <input id="rideFareValue" type="number" min="1" placeholder="Enter updated fare" />
+      </label>
+      <button id="confirmRideStatusBtn" class="btn btn-primary" type="button">Confirm update</button>
+    </div>
+  </div>
+
+  <div id="loadingOverlay" class="loading-overlay hidden" aria-hidden="true">
+    <div class="spinner"></div>
+    <span>Loading dashboard</span>
+  </div>
+
+  <script src="js/driver.js"></script>
+</body>
+</html>

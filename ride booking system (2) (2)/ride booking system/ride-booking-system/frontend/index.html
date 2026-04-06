@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ride Booking | Smart city rides</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="homepage-body">
+  <div class="home-orb home-orb-one" aria-hidden="true"></div>
+  <div class="home-orb home-orb-two" aria-hidden="true"></div>
+  <div class="home-orb home-orb-three" aria-hidden="true"></div>
+
+  <header class="home-header">
+    <nav class="home-nav home-container" aria-label="Primary">
+      <a href="/" class="home-brand" aria-label="Ride Booking homepage">
+        <span class="home-brand-mark">RB</span>
+        <span class="home-brand-copy">
+          <strong>Ride Booking</strong>
+          <span>Modern urban mobility</span>
+        </span>
+      </a>
+
+      <button class="home-menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navPanel" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="home-nav-panel" id="navPanel">
+        <div class="home-nav-links">
+          <a href="#features">Features</a>
+          <a href="#tracking">Tracking</a>
+          <a href="#booking">Book now</a>
+          <a href="#safety">Safety</a>
+        </div>
+        <div class="home-nav-actions">
+          <a class="btn btn-secondary home-nav-btn" href="login.html">Login</a>
+          <a class="btn btn-primary home-nav-btn" href="register.html">Create account</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-section home-container">
+      <div class="hero-copy reveal">
+        <span class="hero-kicker">Responsive ride booking platform</span>
+        <h1>Book faster, travel safer, and stay in control from pickup to arrival.</h1>
+        <p class="hero-lead">
+          A professional ride booking experience with live ride visibility, secure checkout,
+          and reliable dispatch flows that stay connected to your existing server APIs.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary hero-btn" href="#booking">Book a ride</a>
+          <a class="btn btn-secondary hero-btn" href="login.html">Open your portal</a>
+        </div>
+
+        <div class="hero-highlights" aria-label="Key highlights">
+          <article class="hero-chip">
+            <strong data-counter="12000">0</strong>
+            <span>Rides coordinated</span>
+          </article>
+          <article class="hero-chip">
+            <strong data-counter="98">0</strong>
+            <span>Secure payment success rate</span>
+          </article>
+          <article class="hero-chip">
+            <strong data-counter="24">0</strong>
+            <span>Trip updates every day</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="hero-card hero-card-main">
+          <div class="hero-card-top">
+            <span class="status-pill home-status-pill">Live trip orchestration</span>
+            <span class="hero-dot" aria-hidden="true"></span>
+          </div>
+          <h2>Next ride in motion</h2>
+          <div class="journey-rail" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="journey-points">
+            <div class="journey-point">
+              <strong>Pickup</strong>
+              <span>Downtown Metro Station</span>
+            </div>
+            <div class="journey-point active">
+              <strong>Driver tracking</strong>
+              <span>Vehicle approaching in 3 min</span>
+            </div>
+            <div class="journey-point">
+              <strong>Dropoff</strong>
+              <span>Business Bay Tower</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card hero-card-floating">
+          <span class="hero-card-label">Protected checkout</span>
+          <strong>Card, UPI, and cash</strong>
+          <p>Payment preferences flow into the existing booking process with no backend changes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip home-container reveal" aria-label="Service trust indicators">
+      <div>
+        <strong>Fast dispatch</strong>
+        <span>Clear booking actions and quick ride requests.</span>
+      </div>
+      <div>
+        <strong>Tracked journeys</strong>
+        <span>Ride status visibility from request to completion.</span>
+      </div>
+      <div>
+        <strong>Secure payments</strong>
+        <span>Compatible with your current payment APIs and flows.</span>
+      </div>
+    </section>
+
+    <section class="feature-section home-container" id="features">
+      <div class="section-intro reveal">
+        <span class="hero-kicker">What makes the experience better</span>
+        <h2>Built for clarity, speed, and confidence.</h2>
+        <p>
+          The homepage is designed to guide customers quickly from discovery to booking while
+          keeping the product professional, accessible, and easy to navigate on any device.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+          <h3>Quick ride booking</h3>
+          <p>Enter pickup, dropoff, vehicle type, and payment preference in one focused flow.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21s7-4.4 7-11a7 7 0 1 0-14 0c0 6.6 7 11 7 11Zm0-8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/></svg>
+          </div>
+          <h3>Driver tracking</h3>
+          <p>Communicate live trip progress visually so riders always know what happens next.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 7h18v10H3zM3 10h18M7 15h3"/></svg>
+          </div>
+          <h3>Secure payments</h3>
+          <p>Support card, UPI, and cash with a polished payment-ready UI connected to current endpoints.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="tracking-section home-container" id="tracking">
+      <div class="tracking-panel reveal">
+        <div class="section-intro">
+          <span class="hero-kicker">Tracking experience</span>
+          <h2>Every ride feels transparent.</h2>
+          <p>
+            Visual status changes, structured ride checkpoints, and concise summaries help users
+            trust the journey and reduce booking friction.
+          </p>
+        </div>
+        <div class="tracking-steps">
+          <article class="tracking-step">
+            <span>01</span>
+            <div>
+              <strong>Request confirmed</strong>
+              <p>Booking details are captured with clear pickup, dropoff, fare, and payment context.</p>
+            </div>
+          </article>
+          <article class="tracking-step">
+            <span>02</span>
+            <div>
+              <strong>Driver assigned</strong>
+              <p>Riders can understand the next state immediately without confusion or clutter.</p>
+            </div>
+          </article>
+          <article class="tracking-step">
+            <span>03</span>
+            <div>
+              <strong>Trip completed</strong>
+              <p>Payment and follow-up actions remain easy to access through the existing system.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-section home-container" id="booking">
+      <div class="booking-shell reveal">
+        <div class="booking-copy">
+          <span class="hero-kicker">Prominent booking call to action</span>
+          <h2>Start a ride request from the homepage.</h2>
+          <p>
+            This form uses the current ride creation endpoint. If a customer session is active,
+            it can submit directly. If not, we guide the user to login first and preserve the draft.
+          </p>
+          <ul class="booking-points">
+            <li>Responsive two-column layout on large screens</li>
+            <li>Accessible labels and live status messaging</li>
+            <li>Fare estimate synced with selected vehicle</li>
+          </ul>
+        </div>
+
+        <form class="booking-form-card" id="homepageBookingForm" novalidate>
+          <div class="booking-user-state" id="bookingUserState" role="status" aria-live="polite">Checking session...</div>
+          <div id="bookingNotice" class="notice compact-notice home-notice hidden" role="status" aria-live="polite"></div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>Pickup location</span>
+              <input id="homePickup" type="text" placeholder="Enter pickup address" required />
+            </label>
+            <label class="field">
+              <span>Dropoff location</span>
+              <input id="homeDropoff" type="text" placeholder="Enter destination" required />
+            </label>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>Vehicle type</span>
+              <select id="homeVehicle">
+                <option value="bike">Bike</option>
+                <option value="sedan" selected>Sedan</option>
+                <option value="suv">SUV</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Payment method</span>
+              <select id="homePaymentMethod">
+                <option value="card">Card</option>
+                <option value="upi">UPI</option>
+                <option value="cash">Cash</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Estimated fare</span>
+            <input id="homeFare" type="number" readonly />
+          </label>
+
+          <button id="homeBookingBtn" class="btn btn-primary btn-large" type="submit">Book ride now</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="safety-section home-container" id="safety">
+      <div class="safety-grid">
+        <article class="safety-card reveal">
+          <span class="hero-kicker">Professional UX</span>
+          <h2>A homepage that feels production-ready.</h2>
+          <p>
+            Strong visual hierarchy, smooth animations, and polished spacing create a more
+            trustworthy first impression for customers, drivers, and admins.
+          </p>
+        </article>
+        <article class="safety-card reveal">
+          <span class="hero-kicker">Accessibility first</span>
+          <h2>Readable, responsive, and keyboard-friendly.</h2>
+          <p>
+            The layout keeps contrast, focus states, semantic structure, and smaller screens in mind
+            so the experience remains usable on phones, tablets, and desktops.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/home.js"></script>
+</body>
+</html>

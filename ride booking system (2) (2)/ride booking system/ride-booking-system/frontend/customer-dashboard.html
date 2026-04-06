@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="dashboard-body">
+  <div class="dashboard-shell">
+    <aside class="app-sidebar" id="customerSidebar">
+      <div class="sidebar-brand">
+        <span class="brand-mark">RB</span>
+        <div>
+          <strong>Ride Booking</strong>
+          <span>Customer portal</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button type="button" class="nav-link active" data-tab-target="profile">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.1 0-7 2.1-7 5v1h14v-1c0-2.9-2.9-5-7-5Z"/></svg>
+          </span>
+          <span>Profile</span>
+        </button>
+        <button type="button" class="nav-link" data-tab-target="rides">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h14v6H5zM4 13h16l1 4v2h-2a2 2 0 0 1-4 0H9a2 2 0 0 1-4 0H3v-2l1-4Z"/></svg>
+          </span>
+          <span>Ride Booking</span>
+        </button>
+        <button type="button" class="nav-link" data-tab-target="payments">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v12H3zM5 10h14V8H5Zm0 6h4v-2H5Z"/></svg>
+          </span>
+          <span>Payments</span>
+        </button>
+        <button type="button" class="nav-link" data-tab-target="feedback">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 17.3-5.2 3.1 1.4-5.9L3.5 10l6.1-.5L12 4l2.4 5.5 6.1.5-4.7 4.5 1.4 5.9Z"/></svg>
+          </span>
+          <span>Feedback</span>
+        </button>
+      </nav>
+    </aside>
+
+    <div class="dashboard-main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button mobile-only" id="sidebarToggle" type="button" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <div>
+            <p class="eyebrow">Customer dashboard</p>
+            <h1>Welcome back, <span id="customerNameDisplay">Rider</span></h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <span class="status-pill">Active account</span>
+          <button id="logoutBtn" class="btn btn-secondary" type="button">Logout</button>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+        <section class="hero-panel glass-panel">
+          <div>
+            <span class="eyebrow">Overview</span>
+            <h2>Your rides, payments, and feedback in one place.</h2>
+          </div>
+          <div class="metric-grid">
+            <article class="metric-card">
+              <span>Profile completion</span>
+              <strong id="profileCompletionValue">0%</strong>
+            </article>
+            <article class="metric-card">
+              <span>Total rides</span>
+              <strong id="rideCountValue">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Pending payments</span>
+              <strong id="pendingPaymentValue">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Feedback shared</span>
+              <strong id="feedbackCountValue">0</strong>
+            </article>
+          </div>
+        </section>
+
+        <section id="profile" class="tab active">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Profile</span>
+              <h2>Your rider profile</h2>
+            </div>
+            <button id="editProfileBtn" class="btn btn-secondary" type="button">Edit profile</button>
+          </div>
+
+          <div class="content-grid two-column">
+            <article class="info-card">
+              <h3>Account details</h3>
+              <div id="profileInfo" class="stack-list"></div>
+            </article>
+
+            <article id="profileForm" class="info-card hidden">
+              <h3>Update profile</h3>
+              <div class="field-grid">
+                <label class="field">
+                  <span>Name</span>
+                  <input type="text" id="name" placeholder="Name" />
+                </label>
+                <label class="field">
+                  <span>Phone</span>
+                  <input type="text" id="phone" placeholder="Phone" />
+                </label>
+              </div>
+              <label class="field">
+                <span>New password</span>
+                <input type="password" id="newPassword" placeholder="Leave blank to keep current password" />
+              </label>
+              <button id="saveProfileBtn" class="btn btn-primary" type="button">Save changes</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="rides" class="tab">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Ride booking</span>
+              <h2>Book your next ride</h2>
+            </div>
+            <div id="rideMsg" class="notice compact-notice" role="status" aria-live="polite"></div>
+          </div>
+
+          <div class="content-grid two-column">
+            <article class="info-card">
+              <h3>Trip planner</h3>
+              <div class="field-grid">
+                <label class="field">
+                  <span>Pickup</span>
+                  <input id="pickup" placeholder="Pickup address" />
+                </label>
+                <label class="field">
+                  <span>Dropoff</span>
+                  <input id="dropoff" placeholder="Dropoff address" />
+                </label>
+              </div>
+              <div class="field-grid">
+                <label class="field">
+                  <span>Vehicle</span>
+                  <select id="vehicle">
+                    <option value="bike">Bike</option>
+                    <option value="sedan" selected>Sedan</option>
+                    <option value="suv">SUV</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Preferred payment</span>
+                  <select id="preferredPaymentMethod">
+                    <option value="card">Card</option>
+                    <option value="upi">UPI</option>
+                    <option value="cash">Cash</option>
+                  </select>
+                </label>
+              </div>
+              <label class="field">
+                <span>Estimated fare</span>
+                <input id="estimatedFare" type="number" readonly />
+              </label>
+              <button id="bookRideBtn" class="btn btn-primary" type="button">Request ride</button>
+            </article>
+
+            <article class="info-card accent-card">
+              <h3>Vehicle options</h3>
+              <div class="stack-list">
+                <div class="detail-row"><strong>Bike</strong><span>Compact city rides</span></div>
+                <div class="detail-row"><strong>Sedan</strong><span>Balanced daily travel</span></div>
+                <div class="detail-row"><strong>SUV</strong><span>Extra room for groups</span></div>
+              </div>
+            </article>
+          </div>
+
+          <article class="info-card">
+            <div class="section-heading compact">
+              <h3>My rides</h3>
+              <span class="status-pill subtle">Latest activity</span>
+            </div>
+            <div id="rideList" class="card-grid"></div>
+          </article>
+        </section>
+
+        <section id="payments" class="tab">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Checkout</span>
+              <h2>Payments and trip receipts</h2>
+            </div>
+          </div>
+
+          <div class="content-grid two-column">
+            <article class="info-card accent-card">
+              <h3>Payment status</h3>
+              <p>Review completed payments and settle outstanding rides.</p>
+            </article>
+            <article class="info-card">
+              <h3>Payment methods</h3>
+              <div class="payment-methods">
+                <span class="method-chip">Card</span>
+                <span class="method-chip">UPI</span>
+                <span class="method-chip">Cash</span>
+              </div>
+            </article>
+          </div>
+
+          <article class="info-card">
+            <div id="paymentList" class="card-grid"></div>
+          </article>
+        </section>
+
+        <section id="feedback" class="tab">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Experience</span>
+              <h2>Share ride feedback</h2>
+            </div>
+          </div>
+
+          <div class="content-grid two-column">
+            <article class="info-card">
+              <h3>Leave feedback</h3>
+              <label class="field">
+                <span>Recipient user ID</span>
+                <input id="fbToId" placeholder="Driver or admin ID" />
+              </label>
+              <label class="field">
+                <span>Message</span>
+                <textarea id="fbMessage" rows="4" placeholder="Describe the ride experience"></textarea>
+              </label>
+              <div class="field">
+                <span>Rating</span>
+                <div class="star-rating" id="starRating">
+                  <button type="button" class="rating-star active" data-rating="1">&#9733;</button>
+                  <button type="button" class="rating-star active" data-rating="2">&#9733;</button>
+                  <button type="button" class="rating-star active" data-rating="3">&#9733;</button>
+                  <button type="button" class="rating-star active" data-rating="4">&#9733;</button>
+                  <button type="button" class="rating-star active" data-rating="5">&#9733;</button>
+                </div>
+                <input id="fbRating" type="hidden" value="5" />
+              </div>
+              <button id="submitFeedbackBtn" class="btn btn-primary" type="button">Submit feedback</button>
+            </article>
+
+            <article class="info-card accent-card">
+              <h3>Recent ratings</h3>
+              <p>Track the feedback you have shared with drivers and admins.</p>
+            </article>
+          </div>
+
+          <article class="info-card">
+            <div id="feedbackList" class="card-grid"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="paymentModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="paymentModal"></div>
+    <div class="modal-dialog glass-panel">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Confirm payment</span>
+          <h3>Complete checkout</h3>
+        </div>
+        <button class="icon-button" type="button" data-close-modal="paymentModal" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <p id="paymentModalRideSummary"></p>
+      <input id="paymentRideId" type="hidden" />
+      <label class="field">
+        <span>Payment method</span>
+        <select id="paymentMethodSelect">
+          <option value="card">Card</option>
+          <option value="upi">UPI</option>
+          <option value="cash">Cash</option>
+        </select>
+      </label>
+      <button id="confirmPaymentBtn" class="btn btn-primary" type="button">Confirm payment</button>
+    </div>
+  </div>
+
+  <div id="feedbackModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="feedbackModal"></div>
+    <div class="modal-dialog glass-panel">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow">Feedback saved</span>
+          <h3>Thank you for the rating</h3>
+        </div>
+        <button class="icon-button" type="button" data-close-modal="feedbackModal" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6 18 18M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <p id="feedbackModalText">Your feedback has been sent successfully.</p>
+      <button class="btn btn-primary" type="button" data-close-modal="feedbackModal">Close</button>
+    </div>
+  </div>
+
+  <div id="loadingOverlay" class="loading-overlay hidden" aria-hidden="true">
+    <div class="spinner"></div>
+    <span>Loading dashboard</span>
+  </div>
+
+  <script src="js/customer.js"></script>
+</body>
+</html>
